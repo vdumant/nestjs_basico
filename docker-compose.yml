@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  store_backend:
+    container_name: store_backend
+    build: .
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    env_file:
+      - .env
+    command: /bin/sh -c "while sleep 1000; do :; done;"
+    networks:
+      - network1
+networks:
+  network1:
+    name: mi_red
+    external: true
